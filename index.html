@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>האקדמיה לטניס כפר המכביה</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+        header {
+            background: url('https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 60px 15px;
+            text-align: center;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px #000;
+        }
+        nav {
+            background: #003366;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        section {
+            padding: 20px;
+        }
+        .service {
+            background: white;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            text-align: center;
+        }
+        .service img {
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+        .service h3 {
+            margin-top: 15px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: #008CBA;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #about img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .contact-button {
+            background: #008CBA;
+        }
+        .language-buttons {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+        .language-buttons button {
+            padding: 10px;
+            margin: 5px;
+            background: #003366;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .language-buttons button:hover {
+            background: #008CBA;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-buttons">
+        <button onclick="changeLanguage('he')">HE</button>
+        <button onclick="changeLanguage('ru')">RU</button>
+        <button onclick="changeLanguage('en')">EN</button>
+    </div>
+
+    <header id="header">האקדמיה לטניס כפר המכביה</header>
+    <nav>
+        <a href="#services" id="services-link">השירותים שלנו</a>
+        <a href="#about" id="about-link">מי אנחנו</a>
+        <a href="#contact" class="contact-button" id="contact-link">צור קשר</a>
+    </nav>
+    <section id="services">
+        <h2 id="services-title">השירותים שלנו</h2>
+        <div class="service">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipPciKwe7Om5bfQLqZ6s-vvUNWWIAQq_XWMPqXuA=s680-w680-h510" alt="חוגים לכל הגילאים">
+            <h3 id="service1-title">חוגים לכל הגילאים</h3>
+            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+קבוצתיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service1-link">לפרטים נוספים</a>
+        </div>
+        <div class="service">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipPd-ylcJQtNXCag_4aDo8aXISF7wFmEt7SNpa6d=s680-w680-h510" alt="אימוני טניס אישיים">
+            <h3 id="service2-title">אימוני טניס אישיים</h3>
+            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+אישיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service2-link">לפרטים נוספים</a>
+        </div>
+        <div class="service">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipOCpn7LxR5PdDFyen6upwQT0I1AWM-6GNPndoR7=s680-w680-h510" alt="שירותי שיזור מחבטים">
+            <h3 id="service3-title">שירותי שיזור מחבטים</h3>
+            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+בשירותי+שיזור+מחבטים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service3-link">לפרטים נוספים</a>
+        </div>
+        <div class="service">
+            <img src="https://lazuz.co.il/wp-content/uploads/2023/01/Untitled-1.png" alt="השכרת מגרשים">
+            <h3 id="service4-title">השכרת מגרשים</h3>
+            <a class="button" href="https://lazuz.co.il/" target="_blank" id="service4-link">לפרטים נוספים</a>
+        </div>
+    </section>
+    <section id="about">
+        <h2 id="about-title">מי אנחנו</h2>
+        <p id="about-text">האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4. בנוסף, צוות האקדמיה מרכז בו 3 מאמנים תחרותיים, 3 מאמנים חברתיים ומאמן כושר. בתקופת פעילות האקדמיה במועדון, זכו שישה שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית "LAZUZ", שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס.</p>
+        <img src="https://lh3.googleusercontent.com/p/AF1QipOz1Aq4Dg9qVnVNoxPYEoJZ46WOHskCjs_ButRu=s680-w680-h510" alt="האקדמיה לטניס כפר המכביה">
+    </section>
+    <section id="contact">
+        <h2 id="contact-title">צור קשר</h2>
+        <p id="contact-text">אם אתם רוצים ליצור קשר , התקשרו אלינו או תכתבו הודעה בווצאפ למספר - 0585348438</p>
+        <a class="button" href="tel:0585348438" id="contact-link">התקשר עכשיו</a>
+    </section>
+
+    <script>
+        function changeLanguage(lang) {
+            if (lang === 'he') {
+                document.getElementById("header").innerText = "האקדמיה לטניס כפר המכביה";
+                document.getElementById("services-link").innerText = "השירותים שלנו";
+                document.getElementById("about-link").innerText = "מי אנחנו";
+                document.getElementById("contact-link").innerText = "צור קשר";
+                document.getElementById("services-title").innerText = "השירותים שלנו";
+                document.getElementById("service1-title").innerText = "חוגים לכל הגילאים";
+                document.getElementById("service2-title").innerText = "אימוני טניס אישיים";
+                document.getElementById("service3-title").innerText = "שירותי שיזור מחבטים";
+                document.getElementById("service4-title").innerText = "השכרת מגרשים";
+                document.getElementById("about-title").innerText = "מי אנחנו";
+                document.getElementById("about-text").innerText = "האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים...";
+                document.getElementById("contact-title").innerText = "צור קשר";
+                document.getElementById("contact-text").innerText = "אם אתם רוצים ליצור קשר , התקשרו אלינו או תכתבו הודעה בווצאפ למספר - 0585348438";
+            } else if (lang === 'ru') {
+                document.getElementById("header").innerText = "Теннисная академия Кфар Махбия";
+                document.getElementById("services-link").innerText = "Наши услуги";
+                document.getElementById("about-link").innerText = "О нас";
+                document.getElementById("contact-link").innerText = "Контакты";
+                document.getElementById("services-title").innerText = "Наши услуги";
+                document.getElementById("service1-title").innerText = "Групповые занятия для всех возрастов";
+                document.getElementById("service2-title").innerText = "Индивидуальные тренировки";
+                document.getElementById("service3-title").innerText = "Услуги по шлифовке ракеток";
+                document.getElementById("service4-title").innerText = "Аренда кортов";
+                document.getElementById("about-title").innerText = "О нас";
+                document.getElementById("about-text").innerText = "Теннисная академия была основана в 2013 году и управляется Костой Миллером, теннисистом с более чем десяти летним опытом...";
+                document.getElementById("contact-title").innerText = "Контакты";
+                document.getElementById("contact-text").innerText = "Для связи с нами позвоните или напишите сообщение на WhatsApp на номер - 0585348438";
+            } else if (lang === 'en') {
+                document.getElementById("header").innerText = "Tennis Academy Kfar Maccabiah";
+                document.getElementById("services-link").innerText = "Our Services";
+                document.getElementById("about-link").innerText = "About Us";
+                document.getElementById("contact-link").innerText = "Contact Us";
+                document.getElementById("services-title").innerText = "Our Services";
+                document.getElementById("service1-title").innerText = "Group Classes for All Ages";
+                document.getElementById("service2-title").innerText = "Private Tennis Lessons";
+                document.getElementById("service3-title").innerText = "Racket Restringing Services";
+                document.getElementById("service4-title").innerText = "Court Rentals";
+                document.getElementById("about-title").innerText = "About Us";
+                document.getElementById("about-text").innerText = "The Tennis Academy was opened in 2013 and is managed by Costa Miller, a tennis player with over a decade of experience...";
+                document.getElementById("contact-title").innerText = "Contact Us";
+                document.getElementById("contact-text").innerText = "If you want to contact us, call or send a message via WhatsApp to the number - 0585348438";
+            }
+        }
+    </script>
+</body>
+</html>
