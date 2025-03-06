@@ -84,6 +84,25 @@
         .language-buttons button:hover {
             background:BLUE ;
         }
+        .social-buttons {
+    position: fixed;
+    top: 10px;
+    right: 160px;
+    display: flex;
+    gap: 10px;
+}
+
+.social-button img {
+    width: 35px;
+    height: 35px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-button img:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
     </style>
 </head>
 <body>
@@ -91,6 +110,15 @@
         <button onclick="changeLanguage('he')">HE</button>
         <button onclick="changeLanguage('ru')">RU</button>
         <button onclick="changeLanguage('en')">EN</button>
+        <div class="social-buttons">
+    <a href="https://www.facebook.com/KfarHamaccabiaTennis/" target="_blank" class="social-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/kfarhamaccabiah?igsh=MjRrcjA2MTBsNDhk" target="_blank" class="social-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    </a>
+</div>
+
     </div>
 
     <header id="header">האקדמיה לטניס כפר המכביה</header>
