@@ -126,6 +126,7 @@
         <a href="#services" id="services-link">השירותים שלנו</a>
         <a href="#about" id="about-link">מי אנחנו</a>
         <a href="#contact" class="contact-button" id="contact-link">צור קשר</a>
+         <a href="#map" id="map-link">נווט</a>
     </nav>
     <section id="services">
         <h2 id="services-title">השירותים שלנו</h2>
@@ -155,11 +156,88 @@
         <p id="about-text">האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4. בנוסף, צוות האקדמיה מרכז בו 3 מאמנים תחרותיים, 3 מאמנים חברתיים ומאמן כושר. בתקופת פעילות האקדמיה במועדון, זכו שישה שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית "LAZUZ", שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס.</p>
         <img src="https://media.reshet.tv/image/upload/t_image_article_800/v1731154845/uploads/2024/904329593.webp" alt="האקדמיה לטניס כפר המכביה">
     </section>
-    <section id="contact">
-        <h2 id="contact-title">צור קשר</h2>
-        <p id="contact-text">אם אתם רוצים ליצור קשר , התקשרו אלינו או תכתבו הודעה בווצאפ למספר - 0585348438</p>
-        <a class="button" href="tel:0585348438" id="contact-link">התקשר עכשיו</a>
-    </section>
+ <section id="contact" style="max-width:800px; margin:40px auto; font-family: Arial, sans-serif; padding: 0 15px;">
+    <h2 id="contact-title" style="text-align:center; color:#003366; margin-bottom: 15px;">צור קשר</h2>
+    <p id="contact-text" style="text-align:center; margin-bottom: 25px;">
+        אם אתם רוצים ליצור קשר, התקשרו אלינו, כתבו בווצאפ או השאירו פרטים ונחזור אליכם בהקדם.
+    </p>
+
+    <!-- כפתור התקשרות -->
+    <a class="button" 
+       href="tel:0585348438" 
+       id="contact-link" 
+       style="display:block; width:100%; max-width:300px; margin: 0 auto 30px auto; background:#003366; color:#fff; text-align:center; padding:12px 0; border-radius:6px; text-decoration:none; font-weight:bold;">
+       התקשר עכשיו
+    </a>
+
+    <!-- הטופס מגוגל פורמס -->
+    <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSecBLz7gf1BJ-xHJ72nWwNrvvehwBk23wHKu6POyJmJn78rAA/viewform?embedded=true"
+        style="
+            width: 100%;
+            height: 650px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            display: block;
+            margin: 0 auto 40px auto;
+        "
+        marginheight="0" 
+        marginwidth="0"
+        frameborder="0"
+    >
+        טוען…
+    </iframe>
+</section>
+
+
+    <div id="thankYouMessage" style="display:none; color:green; margin-top:20px; font-weight:bold; text-align:center;">
+        תודה שהשארת פרטים! נחזור אליך בקרוב.
+    </div>
+    <section id="map" style="max-width:800px; margin:40px auto; padding: 0 15px;">
+    <h2 style="text-align:center; color:#003366; margin-bottom: 15px;">מפת מגרשי הטניס בכפר המכביה</h2>
+    <div class="mapouter" style="position:relative; text-align:right; width:500px; height:450px;">
+  <div class="gmap_canvas" style="overflow:hidden; background:none!important; width:500px; height:450px;">
+    <iframe width="500px" height="450px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?q=%D7%98%D7%A0%D7%99%D7%A1%20%D7%9B%D7%A4%D7%A8%20%D7%94%D7%9E%D7%9B%D7%91%D7%99%D7%94&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+  </div>
+  <a href="https://norsumediagroup.com/embed-google-map-website-free" target="_blank" rel="noopener noreferrer" class="gme-generated-link">Embed Map on Website for Free</a>
+  <style>
+   .mapouter{position:relative;text-align:right;} .gmap_canvas{overflow:hidden;background:none!important;} .gmap_canvas iframe{width:100%;height:100%;} .mapouter a{display:block;font-size:0.85em;text-align:center;padding:5px 0;color:#6c757d;text-decoration:none;} .gme-generated-link{display:none!important;}
+  </style>
+</div>
+
+
+
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // מונע שליחה רגילה וניווט מחדש
+
+        const form = e.target;
+        const data = new FormData(form);
+        const params = new URLSearchParams();
+
+        for (const pair of data.entries()) {
+            params.append(pair[0], pair[1]);
+        }
+
+        fetch(form.action, {
+            method: 'POST',
+            body: params,
+            mode: 'no-cors'  // חשוב שלא יחסום בקשה למקור חיצוני
+        }).then(() => {
+            form.style.display = 'none';  // מסתיר את הטופס
+            document.getElementById('thankYouMessage').style.display = 'block';  // מציג הודעת תודה
+        }).catch(() => {
+            alert('שגיאה בשליחת הטופס, אנא נסה שוב מאוחר יותר.');
+        });
+    });
+    </script>
+
+</section>
+
+
+
+
 
     <script>
         function changeLanguage(lang) {
@@ -168,6 +246,7 @@
                 document.getElementById("services-link").innerText = "השירותים שלנו";
                 document.getElementById("about-link").innerText = "מי אנחנו";
                 document.getElementById("contact-link").innerText = "צור קשר";
+                document.getElementById("map-link").innerText = "מפה";
                 document.getElementById("services-title").innerText = "השירותים שלנו";
                 document.getElementById("service1-title").innerText = "חוגים לכל הגילאים";
                 document.getElementById("service2-title").innerText = "אימוני טניס אישיים";
@@ -183,6 +262,7 @@
                 document.getElementById("services-link").innerText = "Наши услуги";
                 document.getElementById("about-link").innerText = "О нас";
                 document.getElementById("contact-link").innerText = "Контакты";
+                document.getElementById("map-link").innerText = "НАВИГАЦИЯ";
                 document.getElementById("services-title").innerText = "Наши услуги";
                 document.getElementById("service1-title").innerText = "Групповые занятия для всех возрастов";
                 document.getElementById("service2-title").innerText = "Индивидуальные тренировки";
@@ -197,6 +277,7 @@
                 document.getElementById("services-link").innerText = "Our Services";
                 document.getElementById("about-link").innerText = "About Us";
                 document.getElementById("contact-link").innerText = "Contact Us";
+                document.getElementById("map-link").innerText = "NAVIGATE";
                 document.getElementById("services-title").innerText = "Our Services";
                 document.getElementById("service1-title").innerText = "Group Classes for All Ages";
                 document.getElementById("service2-title").innerText = "Private Tennis Lessons";
