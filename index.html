@@ -128,6 +128,107 @@
         <a href="#contact" class="contact-button" id="contact-link">צור קשר</a>
          <a href="#map" id="map-link">נווט</a>
     </nav>
+    <!-- כפתור נגישות צף -->
+  <button id="accessibility-floating-btn" aria-label="תפריט נגישות" tabindex="0">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSd-Pk9ou6yhIxVWcEyqWIeMinTepMe77bZQ&s" alt="נגישות" />
+</button>
+
+<div id="accessibility-menu-float" style="display:none; flex-direction: column; position: fixed; bottom: 80px; left: 20px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; z-index: 10000; font-size: 14px; width: 180px;">
+  <button onclick="changeFontSize('increase')" style="margin-bottom: 5px;">הגדל גופן</button>
+  <button onclick="changeFontSize('decrease')" style="margin-bottom: 5px;">הקטן גופן</button>
+  <button onclick="toggleContrast()" style="margin-bottom: 5px;">החלף ניגודיות</button>
+  <button onclick="resetAccessibility()">איפוס</button>
+</div>
+
+<script>
+  window.onload = () => {
+    const accessibilityBtn = document.getElementById('accessibility-floating-btn');
+    const accessibilityMenu = document.getElementById('accessibility-menu-float');
+
+    // לוודא שהסטייל מתחיל ב-none
+    accessibilityMenu.style.display = 'none';
+
+    accessibilityBtn.addEventListener('click', () => {
+      console.log('נלחץ כפתור הנגישות'); // לבדיקה
+      if (accessibilityMenu.style.display === 'flex') {
+        accessibilityMenu.style.display = 'none';
+      } else {
+        accessibilityMenu.style.display = 'flex';
+      }
+    });
+
+    accessibilityBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        accessibilityBtn.click();
+      }
+    });
+  };
+
+  // פונקציות נגישות (כמו ששלחתי קודם)
+  const minFontSize = 12;
+  const maxFontSize = 24;
+  let currentFontSize = 16;
+  let highContrast = false;
+
+  function changeFontSize(action) {
+    if (action === 'increase' && currentFontSize < maxFontSize) {
+      currentFontSize += 2;
+    } else if (action === 'decrease' && currentFontSize > minFontSize) {
+      currentFontSize -= 2;
+    }
+    document.body.style.fontSize = currentFontSize + 'px';
+  }
+
+  function toggleContrast() {
+    highContrast = !highContrast;
+    if (highContrast) {
+      document.body.style.backgroundColor = '#000';
+      document.body.style.color = '#fff';
+      const links = document.querySelectorAll('a');
+      links.forEach(link => link.style.color = '#0ff');
+    } else {
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
+      const links = document.querySelectorAll('a');
+      links.forEach(link => link.style.color = '');
+    }
+  }
+
+  function resetAccessibility() {
+    currentFontSize = 16;
+    document.body.style.fontSize = '';
+    document.body.style.backgroundColor = '';
+    document.body.style.color = '';
+    const links = document.querySelectorAll('a');
+    links.forEach(link => link.style.color = '');
+    highContrast = false;
+  }
+</script>
+
+<style>
+  #accessibility-floating-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 48px;
+    height: 48px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 10000;
+  }
+  #accessibility-floating-btn img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+
+   
+
     <section id="services">
         <h2 id="services-title">השירותים שלנו</h2>
         <div class="service">
