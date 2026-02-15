@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         :root {
             --primary-color: #0A4D3C;
@@ -692,16 +694,6 @@
             border: 2px solid #f5c6cb;
         }
 
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-container {
-                padding: 2rem 1.5rem;
-            }
-        }
-
         /* Map Section */
         .map-container {
             border-radius: 24px;
@@ -950,6 +942,14 @@
             .contact-methods {
                 grid-template-columns: 1fr;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
         }
 
         /* Loading Animation */
@@ -1143,50 +1143,17 @@
         </div>
 
         <div class="form-container">
-            <form id="contactForm" class="custom-form">
-                <div class="form-group">
-                    <label for="name" id="form-label-name">שם מלא *</label>
-                    <input type="text" id="name" name="entry.2005620554" required placeholder="הכנס את שמך המלא">
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email" id="form-label-email">אימייל *</label>
-                        <input type="email" id="email" name="entry.1045781291" required placeholder="example@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone" id="form-label-phone">טלפון *</label>
-                        <input type="tel" id="phone" name="entry.1166974658" required placeholder="050-1234567">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="service" id="form-label-service">סוג השירות המבוקש *</label>
-                    <select id="service" name="entry.839337160" required>
-                        <option value="" id="form-option-select">בחר שירות</option>
-                        <option value="חוגים קבוצתיים" id="form-option-1">חוגים קבוצתיים</option>
-                        <option value="אימונים אישיים" id="form-option-2">אימונים אישיים</option>
-                        <option value="שיזור מחבטים" id="form-option-3">שיזור מחבטים</option>
-                        <option value="השכרת מגרשים" id="form-option-4">השכרת מגרשים</option>
-                        <option value="אחר" id="form-option-5">אחר</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message" id="form-label-message">הודעה</label>
-                    <textarea id="message" name="entry.839337160" rows="5" placeholder="ספר לנו עוד על מה שאתה מחפש..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn btn-primary submit-btn" id="form-submit">
-                    <span class="btn-text" id="form-submit-text">שלח פנייה</span>
-                    <span class="btn-loader" style="display: none;">
-                        <span class="spinner"></span>
-                    </span>
-                </button>
-                
-                <div class="form-message" id="formMessage" style="display: none;"></div>
-            </form>
+            <!-- Embedded Google Form (Original) -->
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSecBLz7gf1BJ-xHJ72nWwNrvvehwBk23wHKu6POyJmJn78rAA/viewform?embedded=true" 
+                width="100%" 
+                height="686" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0"
+                style="border-radius: 12px;">
+                בטעינה…
+            </iframe>
         </div>
     </section>
 
@@ -1541,19 +1508,7 @@
                     'acc-grayscale-text': 'גוונים אפורים',
                     'acc-underline-text': 'הדגש קישורים',
                     'acc-readable-text': 'גופן קריא',
-                    'acc-reset-text': 'אפס הכל',
-                    'form-label-name': 'שם מלא *',
-                    'form-label-email': 'אימייל *',
-                    'form-label-phone': 'טלפון *',
-                    'form-label-service': 'סוג השירות המבוקש *',
-                    'form-label-message': 'הודעה',
-                    'form-option-select': 'בחר שירות',
-                    'form-option-1': 'חוגים קבוצתיים',
-                    'form-option-2': 'אימונים אישיים',
-                    'form-option-3': 'שיזור מחבטים',
-                    'form-option-4': 'השכרת מגרשים',
-                    'form-option-5': 'אחר',
-                    'form-submit-text': 'שלח פנייה'
+                    'acc-reset-text': 'אפס הכל'
                 },
                 ru: {
                     'nav-logo': '🎾 Теннисная академия',
@@ -1698,66 +1653,6 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
-        });
-
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const submitBtn = form.querySelector('.submit-btn');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const btnLoader = submitBtn.querySelector('.btn-loader');
-            const formMessage = document.getElementById('formMessage');
-            
-            // Show loading state
-            submitBtn.classList.add('loading');
-            btnText.style.display = 'none';
-            btnLoader.style.display = 'flex';
-            formMessage.style.display = 'none';
-            
-            // Prepare form data
-            const formData = new FormData(form);
-            
-            // Google Forms submission URL
-            const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSecBLz7gf1BJ-xHJ72nWwNrvvehwBk23wHKu6POyJmJn78rAA/formResponse';
-            
-            // Submit to Google Forms
-            fetch(googleFormUrl, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors'
-            })
-            .then(() => {
-                // Success
-                submitBtn.classList.remove('loading');
-                btnText.style.display = 'inline';
-                btnLoader.style.display = 'none';
-                
-                formMessage.className = 'form-message success';
-                formMessage.textContent = 'תודה רבה! הפנייה נשלחה בהצלחה. נחזור אליך בהקדם.';
-                formMessage.style.display = 'block';
-                
-                // Reset form
-                form.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            })
-            .catch((error) => {
-                // Error
-                submitBtn.classList.remove('loading');
-                btnText.style.display = 'inline';
-                btnLoader.style.display = 'none';
-                
-                formMessage.className = 'form-message error';
-                formMessage.textContent = 'אופס! משהו השתבש. נסה שוב או צור קשר בטלפון.';
-                formMessage.style.display = 'block';
-                
-                console.error('Form submission error:', error);
-            });
         });
     </script>
 </body>
