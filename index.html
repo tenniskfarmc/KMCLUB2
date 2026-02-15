@@ -4,399 +4,1761 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>האקדמיה לטניס כפר המכביה</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        :root {
+            --primary-color: #0A4D3C;
+            --secondary-color: #2D8A6E;
+            --accent-color: #F4C430;
+            --text-dark: #1a1a1a;
+            --text-light: #ffffff;
+            --bg-light: #f8f9fa;
+            --gradient-1: linear-gradient(135deg, #0A4D3C 0%, #2D8A6E 100%);
+            --gradient-2: linear-gradient(135deg, #2D8A6E 0%, #45B393 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 40px rgba(0,0,0,0.16);
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Assistant', 'Heebo', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
             direction: rtl;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease;
         }
-        header {
-            background: url('https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 60px 15px;
+
+        body.readable-font {
+            font-family: Arial, sans-serif !important;
+        }
+
+        body.readable-font * {
+            font-family: Arial, sans-serif !important;
+        }
+
+        body.grayscale {
+            filter: grayscale(100%);
+        }
+
+        body.underline-links a {
+            text-decoration: underline !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10,77,60,0.95) 0%, rgba(45,138,110,0.9) 100%),
+                        url('https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510') center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(244,196,48,0.1) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-content {
             text-align: center;
-            font-size: 36px;
-            text-shadow: 2px 2px 4px #000;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
         }
-        nav {
-            background: #003366;
-            padding: 10px;
-            text-align: center;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        nav a {
-            color: white;
-            margin: 10px;
+
+        .hero h1 {
+            font-family: 'Heebo', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: rgba(255,255,255,0.95);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-decoration: none;
-            font-size: 18px;
-        }
-        section {
-            padding: 20px;
-        }
-        .service {
-            background: white;
-            padding: 15px;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px gray;
-            text-align: center;
-        }
-        .service img {
-            width: 100%;
-            border-radius: 10px 10px 0 0;
-        }
-        .service h3 {
-            margin-top: 15px;
-        }
-        .button {
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
-            padding: 10px 20px;
-            margin-top: 10px;
-            background: #008CBA;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        #about img {
-            width: 100%;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .contact-button {
-            background: ;
-        }
-        .language-buttons {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-        }
-        .language-buttons button {
-            padding: 10px;
-            margin: 5px;
-            background: #003366;
-            color: white;
-            border: none;
+            font-family: 'Assistant', sans-serif;
             cursor: pointer;
+            border: none;
         }
-        .language-buttons button:hover {
-            background:BLUE ;
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            box-shadow: 0 4px 20px rgba(244,196,48,0.4);
         }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(244,196,48,0.5);
+            background: #ffd84d;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-light);
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Language & Social Buttons */
+        .top-controls {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 5px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .language-selector button {
+            padding: 8px 16px;
+            background: transparent;
+            border: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        .language-selector button:hover,
+        .language-selector button.active {
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+
         .social-buttons {
-    position: fixed;
-    top: 10px;
-    right: 160px;
-    display: flex;
-    gap: 10px;
-}
+            display: flex;
+            gap: 10px;
+            background: rgba(255,255,255,0.95);
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+        }
 
-.social-button img {
-    width: 35px;
-    height: 35px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
+        .social-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
 
-.social-button img:hover {
-    transform: scale(1.2);
-    opacity: 0.8;
-}
+        .social-button:hover {
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
 
+        .social-button img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Services Section */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Heebo', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-2);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(10,77,60,0.3), transparent);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .about-image {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--bg-light);
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-method {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-method h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: var(--shadow-md);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .custom-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Assistant', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(45,138,110,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            padding: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn-loader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: var(--text-dark);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .form-message {
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1rem;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Map Section */
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 500px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Accessibility Button */
+        .accessibility-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .accessibility-btn:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+
+        .accessibility-btn svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            stroke-width: 2;
+        }
+
+        .accessibility-menu {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            padding: 1.5rem;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 280px;
+            max-width: 320px;
+        }
+
+        .accessibility-menu.active {
+            display: flex;
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-light);
+        }
+
+        .accessibility-header h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .close-accessibility {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-accessibility:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .acc-btn {
+            padding: 1rem 1.2rem;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            font-family: 'Assistant', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-align: right;
+        }
+
+        .acc-btn:hover {
+            background: var(--primary-color);
+            color: var(--text-light);
+            border-color: var(--primary-color);
+            transform: translateX(-3px);
+        }
+
+        .acc-btn.active {
+            background: var(--secondary-color);
+            color: var(--text-light);
+            border-color: var(--secondary-color);
+        }
+
+        .acc-icon {
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .acc-text {
+            flex: 1;
+        }
+
+        .acc-reset-btn {
+            margin-top: 0.5rem;
+            background: #ff4444;
+            color: white;
+            border: 2px solid #ff4444;
+        }
+
+        .acc-reset-btn:hover {
+            background: #cc0000;
+            border-color: #cc0000;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+            font-size: 1.5rem;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .top-controls {
+                left: 10px;
+                top: 70px;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .accessibility-menu {
+                left: 10px;
+                right: 10px;
+                min-width: auto;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
-    <div class="language-buttons">
-        <button onclick="changeLanguage('he')">HE</button>
-        <button onclick="changeLanguage('ru')">RU</button>
-        <button onclick="changeLanguage('en')">EN</button>
-        <div class="social-buttons">
-    <a href="https://www.facebook.com/KfarHamaccabiaTennis/" target="_blank" class="social-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-    </a>
-    <a href="https://www.instagram.com/kfarhamaccabiah?igsh=MjRrcjA2MTBsNDhk" target="_blank" class="social-button">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    </a>
-</div>
-
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
     </div>
 
-    <header id="header">האקדמיה לטניס כפר המכביה</header>
-    <nav>
-        <a href="#services" id="services-link">השירותים שלנו</a>
-        <a href="#about" id="about-link">מי אנחנו</a>
-        <a href="#contact" class="contact-button" id="contact-link">צור קשר</a>
-         <a href="#map" id="map-link">נווט</a>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <div class="nav-logo" id="nav-logo">🎾 האקדמיה לטניס</div>
+            <div class="nav-links">
+                <a href="#services" id="nav-services">השירותים</a>
+                <a href="#about" id="nav-about">אודות</a>
+                <a href="#contact" id="nav-contact">צור קשר</a>
+                <a href="#map" id="nav-map">מיקום</a>
+            </div>
+        </div>
     </nav>
-    <!-- כפתור נגישות צף -->
-  <button id="accessibility-floating-btn" aria-label="תפריט נגישות" tabindex="0">
-  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSd-Pk9ou6yhIxVWcEyqWIeMinTepMe77bZQ&s" alt="נגישות" />
-</button>
 
-<div id="accessibility-menu-float" style="display:none; flex-direction: column; position: fixed; bottom: 80px; left: 20px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; z-index: 10000; font-size: 14px; width: 180px;">
-  <button onclick="changeFontSize('increase')" style="margin-bottom: 5px;">הגדל גופן</button>
-  <button onclick="changeFontSize('decrease')" style="margin-bottom: 5px;">הקטן גופן</button>
-  <button onclick="toggleContrast()" style="margin-bottom: 5px;">החלף ניגודיות</button>
-  <button onclick="resetAccessibility()">איפוס</button>
-</div>
-
-<script>
-  window.onload = () => {
-    const accessibilityBtn = document.getElementById('accessibility-floating-btn');
-    const accessibilityMenu = document.getElementById('accessibility-menu-float');
-
-    // לוודא שהסטייל מתחיל ב-none
-    accessibilityMenu.style.display = 'none';
-
-    accessibilityBtn.addEventListener('click', () => {
-      console.log('נלחץ כפתור הנגישות'); // לבדיקה
-      if (accessibilityMenu.style.display === 'flex') {
-        accessibilityMenu.style.display = 'none';
-      } else {
-        accessibilityMenu.style.display = 'flex';
-      }
-    });
-
-    accessibilityBtn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        accessibilityBtn.click();
-      }
-    });
-  };
-
-  // פונקציות נגישות (כמו ששלחתי קודם)
-  const minFontSize = 12;
-  const maxFontSize = 24;
-  let currentFontSize = 16;
-  let highContrast = false;
-
-  function changeFontSize(action) {
-    if (action === 'increase' && currentFontSize < maxFontSize) {
-      currentFontSize += 2;
-    } else if (action === 'decrease' && currentFontSize > minFontSize) {
-      currentFontSize -= 2;
-    }
-    document.body.style.fontSize = currentFontSize + 'px';
-  }
-
-  function toggleContrast() {
-    highContrast = !highContrast;
-    if (highContrast) {
-      document.body.style.backgroundColor = '#000';
-      document.body.style.color = '#fff';
-      const links = document.querySelectorAll('a');
-      links.forEach(link => link.style.color = '#0ff');
-    } else {
-      document.body.style.backgroundColor = '';
-      document.body.style.color = '';
-      const links = document.querySelectorAll('a');
-      links.forEach(link => link.style.color = '');
-    }
-  }
-
-  function resetAccessibility() {
-    currentFontSize = 16;
-    document.body.style.fontSize = '';
-    document.body.style.backgroundColor = '';
-    document.body.style.color = '';
-    const links = document.querySelectorAll('a');
-    links.forEach(link => link.style.color = '');
-    highContrast = false;
-  }
-</script>
-
-<style>
-  #accessibility-floating-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 48px;
-    height: 48px;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 10000;
-  }
-  #accessibility-floating-btn img {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-</style>
-
-
-   
-
-    <section id="services">
-        <h2 id="services-title">השירותים שלנו</h2>
-        <div class="service">
-            <img src="https://lh3.googleusercontent.com/p/AF1QipPciKwe7Om5bfQLqZ6s-vvUNWWIAQq_XWMPqXuA=s680-w680-h510" alt="חוגים לכל הגילאים">
-            <h3 id="service1-title">חוגים לכל הגילאים</h3>
-            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+קבוצתיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service1-link">לפרטים נוספים</a>
+    <!-- Language & Social Controls -->
+    <div class="top-controls">
+        <div class="language-selector">
+            <button onclick="changeLanguage('he')" class="active" id="lang-he">HE</button>
+            <button onclick="changeLanguage('ru')" id="lang-ru">RU</button>
+            <button onclick="changeLanguage('en')" id="lang-en">EN</button>
         </div>
-        <div class="service">
-            <img src="https://lh3.googleusercontent.com/p/AF1QipPd-ylcJQtNXCag_4aDo8aXISF7wFmEt7SNpa6d=s680-w680-h510" alt="אימוני טניס אישיים">
-            <h3 id="service2-title">אימוני טניס אישיים</h3>
-            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+אישיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service2-link">לפרטים נוספים</a>
+        <div class="social-buttons">
+            <a href="https://www.facebook.com/KfarHamaccabiaTennis/" target="_blank" class="social-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/kfarhamaccabiah?igsh=MjRrcjA2MTBsNDhk" target="_blank" class="social-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
         </div>
-        <div class="service">
-            <img src="https://lh3.googleusercontent.com/4z7slL4FcVcGHZFb1C9xJT8DkRe1q6NKZMgG0sRE9s_UrnqvO4hYmCfzPnA2kzMdEQHhMVzOnz3s-oJ-6g=s265-w265-h265" alt="שירותי שיזור מחבטים">
-            <h3 id="service3-title">שירותי שיזור מחבטים</h3>
-            <a class="button" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+בשירותי+שיזור+מחבטים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service3-link">לפרטים נוספים</a>
-        </div>
-        <div class="service">
-            <img src="https://lazuz.co.il/wp-content/uploads/2023/01/Untitled-1.png" alt="השכרת מגרשים">
-            <h3 id="service4-title">השכרת מגרשים</h3>
-            <a class="button" href="https://lazuz.co.il/" target="_blank" id="service4-link">לפרטים נוספים</a>
-        </div>
-    </section>
-    <section id="about">
-        <h2 id="about-title">מי אנחנו</h2>
-        <p id="about-text">האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4. בנוסף, צוות האקדמיה מרכז בו 3 מאמנים תחרותיים, 3 מאמנים חברתיים ומאמן כושר. בתקופת פעילות האקדמיה במועדון, זכו שישה שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית "LAZUZ", שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס.</p>
-        <img src="https://media.reshet.tv/image/upload/t_image_article_800/v1731154845/uploads/2024/904329593.webp" alt="האקדמיה לטניס כפר המכביה">
-    </section>
- <section id="contact" style="max-width:800px; margin:40px auto; font-family: Arial, sans-serif; padding: 0 15px;">
-    <h2 id="contact-title" style="text-align:center; color:#003366; margin-bottom: 15px;">צור קשר</h2>
-    <p id="contact-text" style="text-align:center; margin-bottom: 25px;">
-        אם אתם רוצים ליצור קשר, התקשרו אלינו, כתבו בווצאפ או השאירו פרטים ונחזור אליכם בהקדם.
-    </p>
-
-    <!-- כפתור התקשרות -->
-    <a class="button" 
-       href="tel:0585348438" 
-       id="contact-link" 
-       style="display:block; width:100%; max-width:300px; margin: 0 auto 30px auto; background:#003366; color:#fff; text-align:center; padding:12px 0; border-radius:6px; text-decoration:none; font-weight:bold;">
-       התקשר עכשיו
-    </a>
-
-    <!-- הטופס מגוגל פורמס -->
-    <iframe 
-        src="https://docs.google.com/forms/d/e/1FAIpQLSecBLz7gf1BJ-xHJ72nWwNrvvehwBk23wHKu6POyJmJn78rAA/viewform?embedded=true"
-        style="
-            width: 100%;
-            height: 650px;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.15);
-            display: block;
-            margin: 0 auto 40px auto;
-        "
-        marginheight="0" 
-        marginwidth="0"
-        frameborder="0"
-    >
-        טוען…
-    </iframe>
-</section>
-
-
-    <div id="thankYouMessage" style="display:none; color:green; margin-top:20px; font-weight:bold; text-align:center;">
-        תודה שהשארת פרטים! נחזור אליך בקרוב.
     </div>
-   <section id="map" style="max-width:800px; margin:40px auto; padding: 0 15px;">
-  <h2 style="text-align:center; color:#003366; margin-bottom: 15px;">מפת מגרשי הטניס בכפר המכביה</h2>
-  <div class="mapouter" style="position:relative; text-align:right; width:100%; max-width:800px; aspect-ratio:16 / 9; margin: 0 auto; box-shadow: 0 0 15px rgba(0,0,0,0.15); border-radius: 12px; overflow: hidden;">
-    <iframe 
-      width="100%" 
-      height="100%" 
-      style="border:0;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade" 
-      src="https://www.google.com/maps/embed/v1/place?q=Peretz%20Bernstein%207,%20Ramat%20Gan&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8">
-    </iframe>
-  </div>
-</section>
 
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">האקדמיה לטניס<br>כפר המכביה</h1>
+            <p class="hero-subtitle" id="hero-subtitle">מצוינות בטניס מאז 2013</p>
+            <div class="hero-cta">
+                <a href="#services" class="btn btn-primary" id="hero-btn-1">גלה את השירותים</a>
+                <a href="#contact" class="btn btn-secondary" id="hero-btn-2">צור קשר</a>
+            </div>
+        </div>
+    </section>
 
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <h2 class="section-title" id="services-title">השירותים שלנו</h2>
+        <p class="section-subtitle" id="services-subtitle">מגוון רחב של שירותי טניס ברמה מקצועית</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPciKwe7Om5bfQLqZ6s-vvUNWWIAQq_XWMPqXuA=s680-w680-h510" alt="חוגים לכל הגילאים">
+                </div>
+                <div class="service-content">
+                    <h3 id="service1-title">חוגים לכל הגילאים</h3>
+                    <p id="service1-desc">קבוצות אימון מותאמות לכל רמה וגיל, מגיל 4 ומעלה</p>
+                    <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+קבוצתיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service1-btn">לפרטים נוספים</a>
+                </div>
+            </div>
 
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPd-ylcJQtNXCag_4aDo8aXISF7wFmEt7SNpa6d=s680-w680-h510" alt="אימוני טניס אישיים">
+                </div>
+                <div class="service-content">
+                    <h3 id="service2-title">אימוני טניס אישיים</h3>
+                    <p id="service2-desc">אימונים פרטניים עם מאמנים מקצועיים להתקדמות מהירה</p>
+                    <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+באימוני+טניס+אישיים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service2-btn">לפרטים נוספים</a>
+                </div>
+            </div>
 
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://lh3.googleusercontent.com/4z7slL4FcVcGHZFb1C9xJT8DkRe1q6NKZMgG0sRE9s_UrnqvO4hYmCfzPnA2kzMdEQHhMVzOnz3s-oJ-6g=s265-w265-h265" alt="שירותי שיזור מחבטים">
+                </div>
+                <div class="service-content">
+                    <h3 id="service3-title">שירותי שיזור מחבטים</h3>
+                    <p id="service3-desc">שירות שיזור מקצועי ברמה בינלאומית</p>
+                    <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום+רב%0Aאני+מתעניין+בשירותי+שיזור+מחבטים%0Aאשמח+לשמוע+פרטים+נוספים&type=phone_number&app_absent=0" target="_blank" id="service3-btn">לפרטים נוספים</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://lazuz.co.il/wp-content/uploads/2023/01/Untitled-1.png" alt="השכרת מגרשים">
+                </div>
+                <div class="service-content">
+                    <h3 id="service4-title">השכרת מגרשים</h3>
+                    <p id="service4-desc">מגרשים איכותיים זמינים להשכרה דרך אפליקציית LAZUZ</p>
+                    <a class="btn btn-primary" href="https://lazuz.co.il/" target="_blank" id="service4-btn">לפרטים נוספים</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2 class="section-title" id="about-title" style="color: white;">מי אנחנו</h2>
+                <p id="about-text">
+                    האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4.
+                </p>
+                <p id="about-text2">
+                    בתקופת פעילות האקדמיה במועדון, זכו 7 שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית LAZUZ, שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="https://media.reshet.tv/image/upload/t_image_article_800/v1731154845/uploads/2024/904329593.webp" alt="האקדמיה לטניס">
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" id="stat1-num">12+</span>
+                <span class="stat-label" id="stat1-label">שנות ניסיון</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="stat2-num">7</span>
+                <span class="stat-label" id="stat2-label">אלופי ישראל</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="stat3-num">20+</span>
+                <span class="stat-label" id="stat3-label">קבוצות אימון</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <h2 class="section-title" id="contact-title">צור קשר</h2>
+        <p class="section-subtitle" id="contact-subtitle">נשמח לענות על כל שאלה ולעזור לכם להתחיל</p>
+        
+        <div class="contact-methods">
+            <div class="contact-method">
+                <div class="contact-icon">📞</div>
+                <h3 id="contact-phone-title">טלפון</h3>
+                <a class="btn btn-primary" href="tel:0585348438" id="contact-phone-btn">התקשר עכשיו</a>
+            </div>
+            <div class="contact-method">
+                <div class="contact-icon">💬</div>
+                <h3 id="contact-whatsapp-title">WhatsApp</h3>
+                <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=972585348438&text=שלום%20רב%0Aאני%20מתעניין%20באימוני%20טניס&type=phone_number&app_absent=0" target="_blank" id="contact-whatsapp-btn">שלח הודעה</a>
+            </div>
+            <div class="contact-method">
+                <div class="contact-icon">✉️</div>
+                <h3 id="contact-form-title">טופס יצירת קשר</h3>
+                <p id="contact-form-desc">מלא פרטים ונחזור אליך</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="contactForm" class="custom-form">
+                <div class="form-group">
+                    <label for="name" id="form-label-name">שם מלא *</label>
+                    <input type="text" id="name" name="entry.2005620554" required placeholder="הכנס את שמך המלא">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" id="form-label-email">אימייל *</label>
+                        <input type="email" id="email" name="entry.1045781291" required placeholder="example@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" id="form-label-phone">טלפון *</label>
+                        <input type="tel" id="phone" name="entry.1166974658" required placeholder="050-1234567">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service" id="form-label-service">סוג השירות המבוקש *</label>
+                    <select id="service" name="entry.839337160" required>
+                        <option value="" id="form-option-select">בחר שירות</option>
+                        <option value="חוגים קבוצתיים" id="form-option-1">חוגים קבוצתיים</option>
+                        <option value="אימונים אישיים" id="form-option-2">אימונים אישיים</option>
+                        <option value="שיזור מחבטים" id="form-option-3">שיזור מחבטים</option>
+                        <option value="השכרת מגרשים" id="form-option-4">השכרת מגרשים</option>
+                        <option value="אחר" id="form-option-5">אחר</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" id="form-label-message">הודעה</label>
+                    <textarea id="message" name="entry.839337160" rows="5" placeholder="ספר לנו עוד על מה שאתה מחפש..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary submit-btn" id="form-submit">
+                    <span class="btn-text" id="form-submit-text">שלח פנייה</span>
+                    <span class="btn-loader" style="display: none;">
+                        <span class="spinner"></span>
+                    </span>
+                </button>
+                
+                <div class="form-message" id="formMessage" style="display: none;"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section" id="map">
+        <h2 class="section-title" id="map-title">המיקום שלנו</h2>
+        <p class="section-subtitle" id="map-subtitle">מגרשי הטניס בכפר המכביה, רמת גן</p>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed/v1/place?q=Peretz%20Bernstein%207,%20Ramat%20Gan&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Accessibility Button & Menu -->
+    <button class="accessibility-btn" id="accessibility-btn" aria-label="תפריט נגישות" title="נגישות">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="8" r="1.5" fill="currentColor"></circle>
+            <path d="M12 11v7"></path>
+            <path d="M8 14h8"></path>
+        </svg>
+    </button>
+
+    <div class="accessibility-menu" id="accessibility-menu">
+        <div class="accessibility-header">
+            <h3 id="acc-header-title">הגדרות נגישות</h3>
+            <button class="close-accessibility" id="close-accessibility" aria-label="סגור">✕</button>
+        </div>
+        <button onclick="changeFontSize('increase')" id="acc-increase" class="acc-btn">
+            <span class="acc-icon">🔍+</span>
+            <span class="acc-text" id="acc-increase-text">הגדל גופן</span>
+        </button>
+        <button onclick="changeFontSize('decrease')" id="acc-decrease" class="acc-btn">
+            <span class="acc-icon">🔍-</span>
+            <span class="acc-text" id="acc-decrease-text">הקטן גופן</span>
+        </button>
+        <button onclick="toggleContrast()" id="acc-contrast" class="acc-btn">
+            <span class="acc-icon">◐</span>
+            <span class="acc-text" id="acc-contrast-text">ניגודיות גבוהה</span>
+        </button>
+        <button onclick="toggleGrayscale()" id="acc-grayscale" class="acc-btn">
+            <span class="acc-icon">⬤</span>
+            <span class="acc-text" id="acc-grayscale-text">גוונים אפורים</span>
+        </button>
+        <button onclick="toggleUnderline()" id="acc-underline" class="acc-btn">
+            <span class="acc-icon">U̲</span>
+            <span class="acc-text" id="acc-underline-text">הדגש קישורים</span>
+        </button>
+        <button onclick="toggleReadableFont()" id="acc-readable" class="acc-btn">
+            <span class="acc-icon">A</span>
+            <span class="acc-text" id="acc-readable-text">גופן קריא</span>
+        </button>
+        <button onclick="resetAccessibility()" id="acc-reset" class="acc-btn acc-reset-btn">
+            <span class="acc-icon">↺</span>
+            <span class="acc-text" id="acc-reset-text">אפס הכל</span>
+        </button>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" onclick="scrollToTop()">↑</button>
 
     <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // מונע שליחה רגילה וניווט מחדש
+        // Accessibility state
+        let accessibilityState = {
+            fontSize: 16,
+            highContrast: false,
+            grayscale: false,
+            underlineLinks: false,
+            readableFont: false
+        };
 
-        const form = e.target;
-        const data = new FormData(form);
-        const params = new URLSearchParams();
-
-        for (const pair of data.entries()) {
-            params.append(pair[0], pair[1]);
-        }
-
-        fetch(form.action, {
-            method: 'POST',
-            body: params,
-            mode: 'no-cors'  // חשוב שלא יחסום בקשה למקור חיצוני
-        }).then(() => {
-            form.style.display = 'none';  // מסתיר את הטופס
-            document.getElementById('thankYouMessage').style.display = 'block';  // מציג הודעת תודה
-        }).catch(() => {
-            alert('שגיאה בשליחת הטופס, אנא נסה שוב מאוחר יותר.');
-        });
-    });
-    </script>
-
-</section>
-
-
-
-
-
-    <script>
-        function changeLanguage(lang) {
-            if (lang === 'he') {
-                document.getElementById("header").innerText = "האקדמיה לטניס כפר המכביה";
-                document.getElementById("services-link").innerText = "השירותים שלנו";
-                document.getElementById("about-link").innerText = "מי אנחנו";
-                document.getElementById("contact-link").innerText = "צור קשר";
-                document.getElementById("map-link").innerText = "מפה";
-                document.getElementById("services-title").innerText = "השירותים שלנו";
-                document.getElementById("service1-title").innerText = "חוגים לכל הגילאים";
-                document.getElementById("service2-title").innerText = "אימוני טניס אישיים";
-                document.getElementById("service3-title").innerText = "שירותי שיזור מחבטים";
-                document.getElementById("service4-title").innerText = "השכרת מגרשים";
-                document.getElementById("about-title").innerText = "מי אנחנו";
-                document.getElementById("about-text").innerText = "האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4. בנוסף, צוות האקדמיה מרכז בו 3 מאמנים תחרותיים, 3 מאמנים חברתיים ומאמן כושר. בתקופת פעילות האקדמיה במועדון, זכו שישה שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית LAZUZ, שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס"
-;
-                document.getElementById("contact-title").innerText = "צור קשר";
-                document.getElementById("contact-text").innerText = "אם אתם רוצים ליצור קשר , התקשרו אלינו או תכתבו הודעה בווצאפ למספר - 0585348438";
-            } else if (lang === 'ru') {
-                document.getElementById("header").innerText = "Теннисная академия Кфар Махбия";
-                document.getElementById("services-link").innerText = "Наши услуги";
-                document.getElementById("about-link").innerText = "О нас";
-                document.getElementById("contact-link").innerText = "Контакты";
-                document.getElementById("map-link").innerText = "НАВИГАЦИЯ";
-                document.getElementById("services-title").innerText = "Наши услуги";
-                document.getElementById("service1-title").innerText = "Групповые занятия для всех возрастов";
-                document.getElementById("service2-title").innerText = "Индивидуальные тренировки";
-                document.getElementById("service3-title").innerText = "Услуги по шлифовке ракеток";
-                document.getElementById("service4-title").innerText = "Аренда кортов";
-                document.getElementById("about-title").innerText = "О нас";
-                document.getElementById("about-text").innerText = "Академия тенниса была открыта в 2013 году и управляется Константином Миллером – теннисистом с более чем десятилетним опытом в воспитании и развитии соревновательных игроков. В настоящее время академия предлагает две тренировочные программы: любительский теннис и соревновательную программы. В обеих программах насчитывается около 20 групп для детей от 4 лет. Тренерский состав академии включает 3 тренеров по соревновательному теннису, 3 тренеров по социальному теннису и тренера по физической подготовке. За время работы академии в клубе 7 её воспитанников стали чемпионами Израиля, среди них – чемпионка Израиля среди женщин 2017 года Влада Икшиберов. Кроме того, академия предоставляет услуги аренды кортов через приложение LAZUZ, услуги натяжки ракеток, продажу теннисного оборудования международного уровня, а также аренду теннисного инвентаря";
-                document.getElementById("contact-title").innerText = "Контакты";
-                document.getElementById("contact-text").innerText = "Для связи с нами позвоните или напишите сообщение на WhatsApp на номер - 0585348438";
-            } else if (lang === 'en') {
-                document.getElementById("header").innerText = "Tennis Academy Kfar Maccabiah";
-                document.getElementById("services-link").innerText = "Our Services";
-                document.getElementById("about-link").innerText = "About Us";
-                document.getElementById("contact-link").innerText = "Contact Us";
-                document.getElementById("map-link").innerText = "NAVIGATE";
-                document.getElementById("services-title").innerText = "Our Services";
-                document.getElementById("service1-title").innerText = "Group Classes for All Ages";
-                document.getElementById("service2-title").innerText = "Private Tennis Lessons";
-                document.getElementById("service3-title").innerText = "Racket Restringing Services";
-                document.getElementById("service4-title").innerText = "Court Rentals";
-                document.getElementById("about-title").innerText = "About Us";
-                document.getElementById("about-text").innerText = "The Tennis Academy was established in 2013 and is managed by Kosta Miller, a tennis player with over a decade of experience in developing and nurturing competitive players. Currently, the academy operates two training programs: a social framework and a competitive framework. Both programs include about 20 groups for children from the age of 4. The academy's coaching staff consists of three competitive tennis coaches, three social tennis coaches, and a fitness coach. During the academy's operation at the club, 7 players have won the title of Israeli champion, including the 2017 Israeli women's champion, Vlada Ikshiberov. In addition, the academy offers court rentals through the LAZUZ app, racket stringing services, the sale of international-level tennis equipment, and tennis equipment rental services"
-;
-                document.getElementById("contact-title").innerText = "Contact Us";
-                document.getElementById("contact-text").innerText = "If you want to contact us, call or send a message via WhatsApp to the number - 0585348438";
+        // Load accessibility preferences from localStorage
+        function loadAccessibilityPreferences() {
+            const saved = localStorage.getItem('accessibilityPreferences');
+            if (saved) {
+                accessibilityState = JSON.parse(saved);
+                applyAccessibilityState();
             }
         }
+
+        // Save accessibility preferences to localStorage
+        function saveAccessibilityPreferences() {
+            localStorage.setItem('accessibilityPreferences', JSON.stringify(accessibilityState));
+        }
+
+        // Apply all accessibility settings
+        function applyAccessibilityState() {
+            // Font size
+            document.body.style.fontSize = accessibilityState.fontSize + 'px';
+            
+            // High contrast
+            if (accessibilityState.highContrast) {
+                document.documentElement.style.setProperty('--primary-color', '#000');
+                document.documentElement.style.setProperty('--text-dark', '#000');
+                document.documentElement.style.setProperty('--bg-light', '#fff');
+                document.body.style.backgroundColor = '#fff';
+                document.body.style.color = '#000';
+                document.getElementById('acc-contrast').classList.add('active');
+            }
+            
+            // Grayscale
+            if (accessibilityState.grayscale) {
+                document.body.classList.add('grayscale');
+                document.getElementById('acc-grayscale').classList.add('active');
+            }
+            
+            // Underline links
+            if (accessibilityState.underlineLinks) {
+                document.body.classList.add('underline-links');
+                document.getElementById('acc-underline').classList.add('active');
+            }
+            
+            // Readable font
+            if (accessibilityState.readableFont) {
+                document.body.classList.add('readable-font');
+                document.getElementById('acc-readable').classList.add('active');
+            }
+        }
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            loadAccessibilityPreferences();
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('nav');
+            const scrollTop = document.getElementById('scroll-top');
+            
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+                scrollTop.classList.add('visible');
+            } else {
+                nav.classList.remove('scrolled');
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Accessibility Menu Toggle
+        document.getElementById('accessibility-btn').addEventListener('click', function() {
+            const menu = document.getElementById('accessibility-menu');
+            menu.classList.toggle('active');
+        });
+
+        document.getElementById('close-accessibility').addEventListener('click', function() {
+            const menu = document.getElementById('accessibility-menu');
+            menu.classList.remove('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('accessibility-menu');
+            const btn = document.getElementById('accessibility-btn');
+            
+            if (!menu.contains(event.target) && !btn.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Accessibility Functions
+        const minFontSize = 14;
+        const maxFontSize = 24;
+
+        function changeFontSize(action) {
+            if (action === 'increase' && accessibilityState.fontSize < maxFontSize) {
+                accessibilityState.fontSize += 2;
+            } else if (action === 'decrease' && accessibilityState.fontSize > minFontSize) {
+                accessibilityState.fontSize -= 2;
+            }
+            document.body.style.fontSize = accessibilityState.fontSize + 'px';
+            saveAccessibilityPreferences();
+        }
+
+        function toggleContrast() {
+            accessibilityState.highContrast = !accessibilityState.highContrast;
+            const btn = document.getElementById('acc-contrast');
+            
+            if (accessibilityState.highContrast) {
+                document.documentElement.style.setProperty('--primary-color', '#000');
+                document.documentElement.style.setProperty('--text-dark', '#000');
+                document.documentElement.style.setProperty('--bg-light', '#fff');
+                document.body.style.backgroundColor = '#fff';
+                document.body.style.color = '#000';
+                btn.classList.add('active');
+            } else {
+                document.documentElement.style.setProperty('--primary-color', '#0A4D3C');
+                document.documentElement.style.setProperty('--text-dark', '#1a1a1a');
+                document.documentElement.style.setProperty('--bg-light', '#f8f9fa');
+                document.body.style.backgroundColor = '';
+                document.body.style.color = '';
+                btn.classList.remove('active');
+            }
+            saveAccessibilityPreferences();
+        }
+
+        function toggleGrayscale() {
+            accessibilityState.grayscale = !accessibilityState.grayscale;
+            const btn = document.getElementById('acc-grayscale');
+            
+            if (accessibilityState.grayscale) {
+                document.body.classList.add('grayscale');
+                btn.classList.add('active');
+            } else {
+                document.body.classList.remove('grayscale');
+                btn.classList.remove('active');
+            }
+            saveAccessibilityPreferences();
+        }
+
+        function toggleUnderline() {
+            accessibilityState.underlineLinks = !accessibilityState.underlineLinks;
+            const btn = document.getElementById('acc-underline');
+            
+            if (accessibilityState.underlineLinks) {
+                document.body.classList.add('underline-links');
+                btn.classList.add('active');
+            } else {
+                document.body.classList.remove('underline-links');
+                btn.classList.remove('active');
+            }
+            saveAccessibilityPreferences();
+        }
+
+        function toggleReadableFont() {
+            accessibilityState.readableFont = !accessibilityState.readableFont;
+            const btn = document.getElementById('acc-readable');
+            
+            if (accessibilityState.readableFont) {
+                document.body.classList.add('readable-font');
+                btn.classList.add('active');
+            } else {
+                document.body.classList.remove('readable-font');
+                btn.classList.remove('active');
+            }
+            saveAccessibilityPreferences();
+        }
+
+        function resetAccessibility() {
+            accessibilityState = {
+                fontSize: 16,
+                highContrast: false,
+                grayscale: false,
+                underlineLinks: false,
+                readableFont: false
+            };
+            
+            // Reset styles
+            document.body.style.fontSize = '';
+            document.documentElement.style.setProperty('--primary-color', '#0A4D3C');
+            document.documentElement.style.setProperty('--text-dark', '#1a1a1a');
+            document.documentElement.style.setProperty('--bg-light', '#f8f9fa');
+            document.body.style.backgroundColor = '';
+            document.body.style.color = '';
+            document.body.classList.remove('grayscale', 'underline-links', 'readable-font');
+            
+            // Remove active states
+            document.querySelectorAll('.acc-btn.active').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            localStorage.removeItem('accessibilityPreferences');
+        }
+
+        // Language Switcher
+        function changeLanguage(lang) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.language-selector button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to selected button
+            document.getElementById('lang-' + lang).classList.add('active');
+            
+            const translations = {
+                he: {
+                    'nav-logo': '🎾 האקדמיה לטניס',
+                    'nav-services': 'השירותים',
+                    'nav-about': 'אודות',
+                    'nav-contact': 'צור קשר',
+                    'nav-map': 'מיקום',
+                    'hero-title': 'האקדמיה לטניס<br>כפר המכביה',
+                    'hero-subtitle': 'מצוינות בטניס מאז 2013',
+                    'hero-btn-1': 'גלה את השירותים',
+                    'hero-btn-2': 'צור קשר',
+                    'services-title': 'השירותים שלנו',
+                    'services-subtitle': 'מגוון רחב של שירותי טניס ברמה מקצועית',
+                    'service1-title': 'חוגים לכל הגילאים',
+                    'service1-desc': 'קבוצות אימון מותאמות לכל רמה וגיל, מגיל 4 ומעלה',
+                    'service1-btn': 'לפרטים נוספים',
+                    'service2-title': 'אימוני טניס אישיים',
+                    'service2-desc': 'אימונים פרטניים עם מאמנים מקצועיים להתקדמות מהירה',
+                    'service2-btn': 'לפרטים נוספים',
+                    'service3-title': 'שירותי שיזור מחבטים',
+                    'service3-desc': 'שירות שיזור מקצועי ברמה בינלאומית',
+                    'service3-btn': 'לפרטים נוספים',
+                    'service4-title': 'השכרת מגרשים',
+                    'service4-desc': 'מגרשים איכותיים זמינים להשכרה דרך אפליקציית LAZUZ',
+                    'service4-btn': 'לפרטים נוספים',
+                    'about-title': 'מי אנחנו',
+                    'about-text': 'האקדמיה לטניס נפתחה בשנת 2013 ומנוהלת על ידי קוסטה מילר, טניסאי בעל ותק וניסיון של למעלה מעשור בגידול וטיפוח שחקנים תחרותיים. כיום מפעילה האקדמיה שתי מסגרות של אימון, מסגרת חברתית ומסגרת תחרותית. בשתי המסגרות תוכלו למצוא כ-20 קבוצות לילדים מגיל 4.',
+                    'about-text2': 'בתקופת פעילות האקדמיה במועדון, זכו 7 שחקנים כאלופי ישראל, מתוכם אלופת ישראל לנשים לשנת 2017 ולאדה איקשיברוב. בנוסף, האקדמיה מספקת שירותי השכרת מגרשים דרך אפליקציית LAZUZ, שירותי שיזור מחבטים, מכירת ציוד טניס ברמה בינלאומית ושירותי השכרת ציוד טניס.',
+                    'stat1-num': '12+',
+                    'stat1-label': 'שנות ניסיון',
+                    'stat2-num': '7',
+                    'stat2-label': 'אלופי ישראל',
+                    'stat3-num': '20+',
+                    'stat3-label': 'קבוצות אימון',
+                    'contact-title': 'צור קשר',
+                    'contact-subtitle': 'נשמח לענות על כל שאלה ולעזור לכם להתחיל',
+                    'contact-phone-title': 'טלפון',
+                    'contact-phone-btn': 'התקשר עכשיו',
+                    'contact-whatsapp-title': 'WhatsApp',
+                    'contact-whatsapp-btn': 'שלח הודעה',
+                    'contact-form-title': 'טופס יצירת קשר',
+                    'contact-form-desc': 'מלא פרטים ונחזור אליך',
+                    'map-title': 'המיקום שלנו',
+                    'map-subtitle': 'מגרשי הטניס בכפר המכביה, רמת גן',
+                    'acc-header-title': 'הגדרות נגישות',
+                    'acc-increase-text': 'הגדל גופן',
+                    'acc-decrease-text': 'הקטן גופן',
+                    'acc-contrast-text': 'ניגודיות גבוהה',
+                    'acc-grayscale-text': 'גוונים אפורים',
+                    'acc-underline-text': 'הדגש קישורים',
+                    'acc-readable-text': 'גופן קריא',
+                    'acc-reset-text': 'אפס הכל',
+                    'form-label-name': 'שם מלא *',
+                    'form-label-email': 'אימייל *',
+                    'form-label-phone': 'טלפון *',
+                    'form-label-service': 'סוג השירות המבוקש *',
+                    'form-label-message': 'הודעה',
+                    'form-option-select': 'בחר שירות',
+                    'form-option-1': 'חוגים קבוצתיים',
+                    'form-option-2': 'אימונים אישיים',
+                    'form-option-3': 'שיזור מחבטים',
+                    'form-option-4': 'השכרת מגרשים',
+                    'form-option-5': 'אחר',
+                    'form-submit-text': 'שלח פנייה'
+                },
+                ru: {
+                    'nav-logo': '🎾 Теннисная академия',
+                    'nav-services': 'Услуги',
+                    'nav-about': 'О нас',
+                    'nav-contact': 'Контакты',
+                    'nav-map': 'Расположение',
+                    'hero-title': 'Теннисная академия<br>Кфар Махбия',
+                    'hero-subtitle': 'Совершенство в теннисе с 2013 года',
+                    'hero-btn-1': 'Наши услуги',
+                    'hero-btn-2': 'Связаться',
+                    'services-title': 'Наши услуги',
+                    'services-subtitle': 'Широкий спектр профессиональных теннисных услуг',
+                    'service1-title': 'Групповые занятия для всех возрастов',
+                    'service1-desc': 'Тренировочные группы для всех уровней и возрастов от 4 лет',
+                    'service1-btn': 'Подробнее',
+                    'service2-title': 'Индивидуальные тренировки',
+                    'service2-desc': 'Частные уроки с профессиональными тренерами для быстрого прогресса',
+                    'service2-btn': 'Подробнее',
+                    'service3-title': 'Услуги по натяжке ракеток',
+                    'service3-desc': 'Профессиональная натяжка ракеток международного уровня',
+                    'service3-btn': 'Подробнее',
+                    'service4-title': 'Аренда кортов',
+                    'service4-desc': 'Качественные корты доступны для аренды через приложение LAZUZ',
+                    'service4-btn': 'Подробнее',
+                    'about-title': 'О нас',
+                    'about-text': 'Академия тенниса была открыта в 2013 году и управляется Константином Миллером – теннисистом с более чем десятилетним опытом в воспитании и развитии соревновательных игроков. В настоящее время академия предлагает две тренировочные программы: любительскую и соревновательную. В обеих программах насчитывается около 20 групп для детей от 4 лет.',
+                    'about-text2': 'За время работы академии 7 её воспитанников стали чемпионами Израиля, среди них – чемпионка Израиля среди женщин 2017 года Влада Икшиберов. Кроме того, академия предоставляет услуги аренды кортов через приложение LAZUZ, услуги натяжки ракеток, продажу теннисного оборудования международного уровня.',
+                    'stat1-num': '12+',
+                    'stat1-label': 'Лет опыта',
+                    'stat2-num': '7',
+                    'stat2-label': 'Чемпионов Израиля',
+                    'stat3-num': '20+',
+                    'stat3-label': 'Тренировочных групп',
+                    'contact-title': 'Контакты',
+                    'contact-subtitle': 'Мы рады ответить на любые вопросы',
+                    'contact-phone-title': 'Телефон',
+                    'contact-phone-btn': 'Позвонить',
+                    'contact-whatsapp-title': 'WhatsApp',
+                    'contact-whatsapp-btn': 'Написать',
+                    'contact-form-title': 'Форма обратной связи',
+                    'contact-form-desc': 'Оставьте данные, мы свяжемся с вами',
+                    'map-title': 'Наше расположение',
+                    'map-subtitle': 'Теннисные корты в Кфар Махбия, Рамат-Ган',
+                    'acc-header-title': 'Настройки доступности',
+                    'acc-increase-text': 'Увеличить шрифт',
+                    'acc-decrease-text': 'Уменьшить шрифт',
+                    'acc-contrast-text': 'Высокая контрастность',
+                    'acc-grayscale-text': 'Оттенки серого',
+                    'acc-underline-text': 'Подчеркнуть ссылки',
+                    'acc-readable-text': 'Читаемый шрифт',
+                    'acc-reset-text': 'Сбросить все'
+                },
+                en: {
+                    'nav-logo': '🎾 Tennis Academy',
+                    'nav-services': 'Services',
+                    'nav-about': 'About',
+                    'nav-contact': 'Contact',
+                    'nav-map': 'Location',
+                    'hero-title': 'Tennis Academy<br>Kfar Maccabiah',
+                    'hero-subtitle': 'Excellence in Tennis since 2013',
+                    'hero-btn-1': 'Explore Services',
+                    'hero-btn-2': 'Contact Us',
+                    'services-title': 'Our Services',
+                    'services-subtitle': 'Wide range of professional tennis services',
+                    'service1-title': 'Group Classes for All Ages',
+                    'service1-desc': 'Training groups adapted to all levels and ages from 4+',
+                    'service1-btn': 'Learn More',
+                    'service2-title': 'Private Tennis Lessons',
+                    'service2-desc': 'Private lessons with professional coaches for rapid progress',
+                    'service2-btn': 'Learn More',
+                    'service3-title': 'Racket Restringing Services',
+                    'service3-desc': 'Professional racket stringing at international level',
+                    'service3-btn': 'Learn More',
+                    'service4-title': 'Court Rentals',
+                    'service4-desc': 'Quality courts available for rent via LAZUZ app',
+                    'service4-btn': 'Learn More',
+                    'about-title': 'About Us',
+                    'about-text': 'The Tennis Academy was established in 2013 and is managed by Kosta Miller, a tennis player with over a decade of experience in developing competitive players. Currently, the academy operates two training programs: social and competitive. Both programs include about 20 groups for children from age 4.',
+                    'about-text2': 'During the academy\'s operation, 7 players have won the Israeli championship, including the 2017 Israeli women\'s champion, Vlada Ikshiberov. Additionally, the academy offers court rentals through the LAZUZ app, racket stringing services, and international-level tennis equipment sales.',
+                    'stat1-num': '12+',
+                    'stat1-label': 'Years of Experience',
+                    'stat2-num': '7',
+                    'stat2-label': 'Israeli Champions',
+                    'stat3-num': '20+',
+                    'stat3-label': 'Training Groups',
+                    'contact-title': 'Contact Us',
+                    'contact-subtitle': 'We\'re happy to answer any questions',
+                    'contact-phone-title': 'Phone',
+                    'contact-phone-btn': 'Call Now',
+                    'contact-whatsapp-title': 'WhatsApp',
+                    'contact-whatsapp-btn': 'Send Message',
+                    'contact-form-title': 'Contact Form',
+                    'contact-form-desc': 'Fill in details and we\'ll get back to you',
+                    'map-title': 'Our Location',
+                    'map-subtitle': 'Tennis courts at Kfar Maccabiah, Ramat Gan',
+                    'acc-header-title': 'Accessibility Settings',
+                    'acc-increase-text': 'Increase Font',
+                    'acc-decrease-text': 'Decrease Font',
+                    'acc-contrast-text': 'High Contrast',
+                    'acc-grayscale-text': 'Grayscale',
+                    'acc-underline-text': 'Underline Links',
+                    'acc-readable-text': 'Readable Font',
+                    'acc-reset-text': 'Reset All'
+                }
+            };
+
+            const t = translations[lang];
+            
+            for (let key in t) {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.innerHTML = t[key];
+                }
+            }
+            
+            // Update direction for RTL/LTR
+            if (lang === 'en') {
+                document.body.setAttribute('dir', 'ltr');
+            } else {
+                document.body.setAttribute('dir', 'rtl');
+            }
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .stat-item, .contact-method').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('.submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoader = submitBtn.querySelector('.btn-loader');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Show loading state
+            submitBtn.classList.add('loading');
+            btnText.style.display = 'none';
+            btnLoader.style.display = 'flex';
+            formMessage.style.display = 'none';
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            
+            // Google Forms submission URL
+            const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSecBLz7gf1BJ-xHJ72nWwNrvvehwBk23wHKu6POyJmJn78rAA/formResponse';
+            
+            // Submit to Google Forms
+            fetch(googleFormUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                // Success
+                submitBtn.classList.remove('loading');
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+                
+                formMessage.className = 'form-message success';
+                formMessage.textContent = 'תודה רבה! הפנייה נשלחה בהצלחה. נחזור אליך בהקדם.';
+                formMessage.style.display = 'block';
+                
+                // Reset form
+                form.reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            })
+            .catch((error) => {
+                // Error
+                submitBtn.classList.remove('loading');
+                btnText.style.display = 'inline';
+                btnLoader.style.display = 'none';
+                
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'אופס! משהו השתבש. נסה שוב או צור קשר בטלפון.';
+                formMessage.style.display = 'block';
+                
+                console.error('Form submission error:', error);
+            });
+        });
     </script>
 </body>
-</html>
 </html>
