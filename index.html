@@ -193,9 +193,19 @@
         }
 
         .nav-logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-logo-img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         .nav-links {
@@ -309,6 +319,19 @@
         .social-button img {
             width: 24px;
             height: 24px;
+        }
+
+        .location-button {
+            background: var(--accent-color);
+        }
+
+        .location-button:hover {
+            background: #ffd84d;
+        }
+
+        .location-icon {
+            font-size: 24px;
+            line-height: 1;
         }
 
         /* Services Section */
@@ -904,6 +927,14 @@
                 display: none;
             }
 
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-logo-img {
+                height: 40px;
+            }
+
             .top-controls {
                 left: 10px;
                 top: 70px;
@@ -950,6 +981,14 @@
             .form-container {
                 padding: 2rem 1.5rem;
             }
+
+            .nav-logo span {
+                font-size: 0.85rem;
+            }
+
+            .nav-logo-img {
+                height: 35px;
+            }
         }
 
         /* Loading Animation */
@@ -995,7 +1034,10 @@
     <!-- Navigation -->
     <nav id="nav">
         <div class="nav-container">
-            <div class="nav-logo" id="nav-logo">🎾 האקדמיה לטניס</div>
+            <a href="#" class="nav-logo" id="nav-logo">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510" alt="לוגו" class="nav-logo-img">
+                <span>האקדמיה לטניס כפר המכביה</span>
+            </a>
             <div class="nav-links">
                 <a href="#services" id="nav-services">השירותים</a>
                 <a href="#about" id="nav-about">אודות</a>
@@ -1013,11 +1055,14 @@
             <button onclick="changeLanguage('en')" id="lang-en">EN</button>
         </div>
         <div class="social-buttons">
-            <a href="https://www.facebook.com/KfarHamaccabiaTennis/" target="_blank" class="social-button">
+            <a href="https://www.facebook.com/KfarHamaccabiaTennis/" target="_blank" class="social-button" title="Facebook">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
             </a>
-            <a href="https://www.instagram.com/kfarhamaccabiah?igsh=MjRrcjA2MTBsNDhk" target="_blank" class="social-button">
+            <a href="https://www.instagram.com/kfarhamaccabiah?igsh=MjRrcjA2MTBsNDhk" target="_blank" class="social-button" title="Instagram">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://www.google.com/maps?hl=iw&mat=CbSaCjUkKTl8ElcBTVDHngRUGMOU7viTOArWaUA1bYYLSOt_WF2gVe47itVmVrJ4HppGl80BWCUK73zyv8v5v7idbB4ZTx53xs8l-LtSKgc_LGDkfn5xdEswyMfNvjA3MK8&authuser=0&um=1&ie=UTF-8&fb=1&gl=il&sa=X&geocode=KZ1tAg0YSx0VMdfNBazr0zRo&daddr=%D7%9E%D7%A8%D7%9B%D7%96+%D7%94%D7%A1%D7%A4%D7%95%D7%A8%D7%98+%D7%9B%D7%A4%D7%A8+%D7%94%D7%9E%D7%9B%D7%91%D7%99%D7%94,+%D7%A4%D7%A8%D7%A5+%D7%91%D7%A8%D7%A0%D7%A9%D7%98%D7%99%D7%99%D7%9F+7,+%D7%A8%D7%9E%D7%AA+%D7%92%D7%9F" target="_blank" class="social-button location-button" title="ניווט ל-Waze">
+                <span class="location-icon">📍</span>
             </a>
         </div>
     </div>
@@ -1459,7 +1504,7 @@
             
             const translations = {
                 he: {
-                    'nav-logo': '🎾 האקדמיה לטניס',
+                    'nav-logo': '<img src="https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510" alt="לוגו" class="nav-logo-img"><span>האקדמיה לטניס כפר המכביה</span>',
                     'nav-services': 'השירותים',
                     'nav-about': 'אודות',
                     'nav-contact': 'צור קשר',
@@ -1511,7 +1556,7 @@
                     'acc-reset-text': 'אפס הכל'
                 },
                 ru: {
-                    'nav-logo': '🎾 Теннисная академия',
+                    'nav-logo': '<img src="https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510" alt="Логотип" class="nav-logo-img"><span>Теннисная академия Кфар Махбия</span>',
                     'nav-services': 'Услуги',
                     'nav-about': 'О нас',
                     'nav-contact': 'Контакты',
@@ -1563,7 +1608,7 @@
                     'acc-reset-text': 'Сбросить все'
                 },
                 en: {
-                    'nav-logo': '🎾 Tennis Academy',
+                    'nav-logo': '<img src="https://lh3.googleusercontent.com/p/AF1QipP5lxKTUmswiPEq8BmMqMiqJD1Fe6xlQ8PVw21f=s680-w680-h510" alt="Logo" class="nav-logo-img"><span>Tennis Academy Kfar Maccabiah</span>',
                     'nav-services': 'Services',
                     'nav-about': 'About',
                     'nav-contact': 'Contact',
